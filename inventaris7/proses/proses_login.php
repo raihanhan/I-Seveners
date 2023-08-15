@@ -7,11 +7,10 @@ $password = $conn->real_escape_string($_POST['password']);
 $level = $_POST['level'];
 
 if (empty($username)|| empty($password) || empty($level)){
-    header('location: ../index.php');
+    header('location: ../login.php');
 
 }
-$sql = "SELECT * FROM user
-        WHERE username = '$username' AND password = '$password' AND id_level ='$level'";
+$sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password' AND id_level ='$level'";
 $query = $conn->query($sql);
 
 if ($query->num_rows > 0){
@@ -21,10 +20,10 @@ if ($query->num_rows > 0){
         if($result['id_level'] == 1){
             header('Location: ../admin/index.php');    
         } else {
-            header('location: ../siswa/form.php');
+            header('location: ../siswa/dashboard.php');
         }
     }
 }else{
      $_SESSION['error']= 'Username atau Password tidak valid';
-     header('location: ../index.php');
+     header('location: ../login.php');
 }

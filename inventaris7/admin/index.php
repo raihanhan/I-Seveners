@@ -4,7 +4,7 @@ session_start();
 require_once '../config/koneksi.php';
 
 if (!isset($_SESSION['id'])) {
-    header('location: ../index.php');
+    header('location: ../login.php');
 }
 
 require_once 'view/header.php';
